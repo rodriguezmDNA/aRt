@@ -1,3 +1,23 @@
+### Understanding polygon
+################################################
+# https://statisticsglobe.com/r-polygon-function-plot/
+
+plot(1, 1, col = "white", xlab = "X", ylab = "Y")   
+polygon(x = c(0.7, 1.3, 1.2, 0.8),                           # X-Coordinates of polygon
+        y = c(0.6, 0.8, 1.4, 1),                             # Y-Coordinates of polygon
+        col = "#1b98e0")    
+
+
+plot(0, 1, col = "white", xlab = "X", ylab = "Y")   
+originX = 0.5
+originY = 0.6
+width = 0.5
+height = 0.5
+polygon(x = c(originX, originX,origin+width,origin+width),                           # X-Coordinates of polygon
+        y = c(originY, originY+height,originY+height,originY),                             # Y-Coordinates of polygon
+        col = "#1b98e0")    
+
+####
 plot.new()
 
 n <- 100
@@ -24,8 +44,8 @@ dev.off(
 # Note that the order of the points is important because the outline of the shape will be traced in the order that the points are listed.
 
 plot.new()
-polygon(c(0,1,2,3,4),
-        c(0,1,2,3,4)**2)
+polygon(c(0,0,1,1,-1,-1,-1,-2),
+        c(1,2,1,2,-1,-2,-3,-3))
 
 
 ############# 
