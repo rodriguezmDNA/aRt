@@ -61,3 +61,6 @@ for (i in seq(1,5000)){
     #print(ranColor)
     plotPoly(ranColor)
 }
+
+#### Try
+#https://github.com/quantixed/gBlocks/blob/master/r/grid_of_hysterical%20squares.R
