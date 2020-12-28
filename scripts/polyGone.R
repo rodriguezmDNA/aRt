@@ -66,6 +66,9 @@ origin <- 0.01
 SeqoffsetX <- seq(0,1,.09)
 SeqoffsetY <- seq(0,1,.09)
 
+seq(0,0.8,.01)
+
+
 for(offsetX in SeqoffsetX){
   for(offsetY in SeqoffsetY){
   ranColor <- sample(colors(),1)
