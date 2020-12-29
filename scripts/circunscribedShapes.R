@@ -23,3 +23,13 @@ polygon(x = c(0.8, 1.2),
         y = c(1.0, 0.8),                             
         col = "transparent")
 
+
+###
+library(ggplot2)
+
+d=data.frame(x=c(1,2,2, 3,4,4),
+             y=c(1,1,2, 2,2,3),
+             t=c('a', 'a', 'a',  'b', 'b', 'b'), r=c(1,2,3, 4,5,6))
+ggplot() +
+  geom_polygon(data=d, mapping=aes(x=x, y=y,group=t)) +
+  NULL  
