@@ -33,3 +33,19 @@ d=data.frame(x=c(1,2,2, 3,4,4),
 ggplot() +
   geom_polygon(data=d, mapping=aes(x=x, y=y,group=t)) +
   NULL  
+
+
+makeTriangle <- function(or,wd,hg,grp=NA){
+  df = data.frame(x=c(or,or+wd,or+wd),
+             y=c(or,or,or+hg),
+             grp=grp)
+  return(df)
+}
+
+d1 = makeTriangle(1,1,1,'a')
+d2 = makeTriangle(1.75,1,1,'b')
+d = rbind(d,d2)
+
+ggplot() +
+  geom_polygon(data=d, mapping=aes(x=x, y=y,group=grp)) +
+  NULL  
