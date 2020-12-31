@@ -44,8 +44,34 @@ makeTriangle <- function(or,wd,hg,grp=NA){
 
 d1 = makeTriangle(1,1,1,'a')
 d2 = makeTriangle(1.75,1,1,'b')
-d = rbind(d,d2)
+d = rbind(d1)
+
+scl <- 0.25
+d <- mutate(d, x = ifelse(grp == 'a', x*scl, x))
+d <-mutate(d, y = ifelse(grp == 'b', y*scl, y))  
+  
+ggplot() +
+  geom_polygon(d,mapping=aes(x=x, y=y,group=grp),fill='white',color='black') +
+  theme_void() +
+  NULL  
+
+###
+d1 = makeTriangle(1,1,1,'a')
+d = rbind(d1)
+
+scaleList <- seq(0.1,1,.05)
+
+d = list()
+for (each in rev(seq(1,length(scaleList)))) {
+  print(let)
+  scl <- scaleList[each]
+  group <- letters[each]
+  d <- rbind(d,makeTriangle(scl,scl,scl,group))
+}
 
 ggplot() +
-  geom_polygon(data=d, mapping=aes(x=x, y=y,group=grp)) +
+  geom_polygon(d,mapping=aes(x=x, y=y,group=grp),fill='transparent',color='black') +
+  theme_void() +
   NULL  
+
+
