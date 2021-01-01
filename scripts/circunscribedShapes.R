@@ -59,19 +59,41 @@ ggplot() +
 d1 = makeTriangle(1,1,1,'a')
 d = rbind(d1)
 
+
 scaleList <- seq(0.1,1,.05)
 
-d = list()
-for (each in rev(seq(1,length(scaleList)))) {
-  print(let)
-  scl <- scaleList[each]
-  group <- letters[each]
-  d <- rbind(d,makeTriangle(scl,scl,scl,group))
-}
+makeArt <- function(scaleList){
 
-ggplot() +
-  geom_polygon(d,mapping=aes(x=x, y=y,group=grp),fill='transparent',color='black') +
-  theme_void() +
-  NULL  
+  d = list()
+  for (each in rev(seq(1,length(scaleList)))) {
+    #print(let)
+    scl <- scaleList[each]
+    group <- letters[each]
+    d <- rbind(d,makeTriangle(scl,scl,scl,group))
+  }
+  
+  ggplot() +
+    geom_polygon(d,mapping=aes(x=x, y=y,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=y, y=x,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=x*-1, y=y*-1,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=y*-1, y=x*-1,group=grp),fill='transparent',color='black') +
+    # geom_polygon(d %>% mutate(y=rev(y)),
+    #              mapping=aes(x=y, y=x,group=grp),fill='transparent',color='black') +
+    geom_polygon(d %>% mutate(x=rev(x)),
+                 mapping=aes(x=y, y=x*-1,group=grp),fill='transparent',color='black') +
+    geom_polygon(d %>% mutate(x=rev(x)),
+                 mapping=aes(x=y*-1, y=x,group=grp),fill='transparent',color='black') +
+    
+    theme_void() +
+    NULL  
+}  
+  
+  
+  
 
+scaleList <- seq(0.1,1,.05)  
+makeArt(scaleList)
 
+makeArt( seq(0,2,.05) )
+makeArt( seq(-1,1,.05) )
+makeArt( seq(-2,2,.05) )
