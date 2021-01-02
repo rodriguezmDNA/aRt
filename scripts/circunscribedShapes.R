@@ -97,3 +97,27 @@ makeArt(scaleList)
 makeArt( seq(0,2,.05) )
 makeArt( seq(-1,1,.05) )
 makeArt( seq(-2,2,.05) )
+
+makeSymm <- function(scaleList){
+  d = list()
+  for (each in rev(seq(1,length(scaleList)))) {
+    #print(let)
+    scl <- scaleList[each]
+  group <- letters[each]
+  d <- rbind(d,makeTriangle(scl,scl,scl,group))
+  }
+  
+  ggplot() +
+    geom_polygon(d,mapping=aes(x=x, y=y,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=x*-1, y=y,group=grp),fill='transparent',color='black') +
+    #geom_polygon(d,mapping=aes(x=y, y=x,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=x, y=y*-1,group=grp),fill='transparent',color='black') +
+    geom_polygon(d,mapping=aes(x=x*-1, y=y*-1,group=grp),fill='transparent',color='black') +
+    theme_void() +
+    NULL  
+}
+
+
+makeSymm( seq(1.5,2,.05) )
+makeSymm( seq(0,2,.05) )
+makeSymm( seq(-1,2,.05) )
