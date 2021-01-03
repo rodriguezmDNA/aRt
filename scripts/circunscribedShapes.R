@@ -121,3 +121,5 @@ makeSymm <- function(scaleList){
 makeSymm( seq(1.5,2,.05) )
 makeSymm( seq(0,2,.05) )
 makeSymm( seq(-1,2,.05) )
+
+makeSymm( seq(-1,2,.5) )
