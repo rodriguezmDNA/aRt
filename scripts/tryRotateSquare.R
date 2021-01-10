@@ -29,19 +29,19 @@ plot.new()
 polygon(rotated[,'x'],rotated[,'y'])
 
 originX = 0.5 #+ offX 
-originY = 0.6 - .05
+originY = 0.6
 width = 0.3 #+ offX 
-height = 0.2  - .05
+height = 0.2
 
-    
-  
 plot.new()
 polygon(x =sq[,'x'],
         y =sq[,'y'],
-        col = "black")
+        col = "transparent")
 
 
-
+p = (originY + width)/2
+q = (originX + height)/2
+points(p,q)
 
 
 rotated = t(data.frame(apply(sq,1, function(x) { rotXY(x[1],x[2])}),row.names = c('x','y')))
