@@ -39,9 +39,9 @@ polygon(x =sq[,'x'],
         col = "transparent")
 
 
-p = (originY + width)/2
-q = (originX + height)/2
-points(p,q)
+p = originX + height
+q = originY + width
+points(q,p)
 
 
 rotated = t(data.frame(apply(sq,1, function(x) { rotXY(x[1],x[2])}),row.names = c('x','y')))
