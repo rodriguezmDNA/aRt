@@ -14,16 +14,20 @@ polygon(c(Xor,Xor+.05,Xor,Xor+Xwi,Xor+Xwi),
 
 
 plot.new()
-xInter <- Xor +sort(sample(seq(0,.05,.001),8)) * replicate(8,plusminus())
-yInter <- Yhe + sort(sample(seq(Yor,Yor+Yhe,.001),8))
-polygon(c(Xor,  ,Xor),
-        c(Yhe,   ,Yhe))
+xInter <- sort(Xor + c(sample(seq(0+.0001,.05,.001),8)) * replicate(8,plusminus()))
+yInter <- sort(Yhe + c(sample(seq(Yor+.0001,Yor+Yhe,.001),8)))
+polygon(sort(c(Xor,xInter)),
+        sort(c(Yor,yInter)))
 
+plot.new()
 
-plusminus <- function(){
-  out <- sample(c(1,-1),1)
-  return(out)
-  }
+polygon(c(.05,.05),
+        c(.05,07))
 
+plot.new()
+xInter <- rep(.05,length(yInter)) * runif(length(yInter),-1,1)
+yInter <- seq(0.05,7,.001)
+polygon(c(xInter,yInter,xInter+.5),
+        c(yInter,xInter,yInter-1.5))
 
 
