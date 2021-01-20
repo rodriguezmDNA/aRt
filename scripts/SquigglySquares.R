@@ -25,9 +25,9 @@ polygon(c(.05,.05),
         c(.05,07))
 
 plot.new()
+yInter <- seq(0.05,7-.01,.01)
 xInter <- rep(.05,length(yInter)) * runif(length(yInter),-1,1)
-yInter <- seq(0.05,7,.001)
-polygon(c(xInter,yInter,xInter+.5),
-        c(yInter,xInter,yInter-1.5))
+polygon(c(xInter,yInter,xInter+.5,yInter),
+        c(yInter,xInter,yInter,xInter+1))
 
 
