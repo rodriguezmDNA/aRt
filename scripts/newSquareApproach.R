@@ -28,5 +28,28 @@ for (i in seq(1,10)){
     polygon(tmp[,1],tmp[,2]+j)  
 }}
 
+histMax = .1
+
+makeSquareHist <- function(xCentre,yCenter,histMax){
+  lt <- c(xCentre - 0.4,yCentre - 0.4) + runif(1,max = histMax)
+  rt <- c(xCentre + 0.4,yCentre - 0.4) + runif(1,max = histMax)
+  rb <- c(xCentre + 0.4,yCentre + 0.4) + runif(1,max = histMax)
+  lb <- c(xCentre - 0.4,yCentre + 0.4) + runif(1,max = histMax)
+  shape <- rbind(lt,rt,rb,lb)
+  return (shape)
+}
+
+
+plot(0, 0,
+     xlim=c(1,10),
+     ylim=c(1,10),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (i in seq(1,10)){
+  for (j in seq(1,10)) {
+    
+    tmp <- makeSquareHist(i,j,histMax = runif(1,0,.2))
+    polygon(tmp[,1],tmp[,2]+j)  
+  }}
+
 
 
