@@ -40,24 +40,29 @@ makeSquareHist <- function(xCentre,yCenter,histMax){
 }
 
 histm <- 0
-levHist=0.08
+levHist = 0.02
 verbose = FALSE
+minXY <- 2
+maxXY <- 8
+
 plot(0, 0,
-     xlim=c(1,10),
-     ylim=c(1,10),
+     xlim=c(-2,12),
+     ylim=c(-2,12),
      col = "white", xlab = "", ylab = "", axes=F)
+
 for (i in seq(1,10)){
   for (j in seq(1,10)) {
     
     
-    if ((i > 3 & i < 7) | (j > 3 & j < 7)){ 
+    if ((i > minXY & i < maxXY) | (j > minXY & j < maxXY)){ 
       
       print(if (verbose) c(i,j,'yes'))
       
       
       maxIJ = (i * levHist) + (j * levHist)
       tmp <- makeSquareHist(i,j,histMax = runif(1,0,maxIJ))
-      polygon(tmp[,1],tmp[,2]+j)  
+      polygon(tmp[,1],tmp[,2]+j,col='transparent')  
+      
     } else {
       print(if (verbose) c(i,j,'yes'))
       
@@ -66,4 +71,25 @@ for (i in seq(1,10)){
     }
     
   }}
+
+plot(0, 0,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     col = "white", xlab = "", ylab = "", axes=F)
+
+tmp <- makeSquareHist(1,1,histMax = 0)
+
+polygon(tmp[,1],tmp[,2],col='transparent')  
+
+
+rotX=function(x,y,angle) {x*cos(angle)-y*sin(angle)}
+rotY=function(x,y,angle) {x*sin(angle)+y*cos(angle)}
+
+rotTMP <- t(apply(tmp,1,function(x){rbind(rotX(x[1],x[2],45),rotY(x[1],x[2],45))}))
+polygon(rotTMP[,1]+1.4,rotTMP[,2]-.4,col='transparent')  
+
+angle=15
+rotTMP <- t(apply(tmp,1,function(x){rbind(rotX(x[1],x[2],angle),rotY(x[1],x[2],angle))}))
+polygon(rotTMP[,1],rotTMP[,2],col='transparent')  
+
 
