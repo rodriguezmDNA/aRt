@@ -39,7 +39,9 @@ makeSquareHist <- function(xCentre,yCenter,histMax){
   return (shape)
 }
 
-
+histm <- 0
+levHist=0.08
+verbose = FALSE
 plot(0, 0,
      xlim=c(1,10),
      ylim=c(1,10),
@@ -47,9 +49,21 @@ plot(0, 0,
 for (i in seq(1,10)){
   for (j in seq(1,10)) {
     
-    tmp <- makeSquareHist(i,j,histMax = runif(1,0,.2))
-    polygon(tmp[,1],tmp[,2]+j)  
+    
+    if ((i > 3 & i < 7) | (j > 3 & j < 7)){ 
+      
+      print(if (verbose) c(i,j,'yes'))
+      
+      
+      maxIJ = (i * levHist) + (j * levHist)
+      tmp <- makeSquareHist(i,j,histMax = runif(1,0,maxIJ))
+      polygon(tmp[,1],tmp[,2]+j)  
+    } else {
+      print(if (verbose) c(i,j,'yes'))
+      
+      tmp <- makeSquareHist(i,j,histMax = histm)
+      polygon(tmp[,1],tmp[,2]+j)
+    }
+    
   }}
-
-
 
