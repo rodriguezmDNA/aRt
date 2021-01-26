@@ -29,11 +29,42 @@ View(rgbAllColors_unique)
 datPCA = rgbAllColors_unique[,1:3]
 rownames(datPCA) = rgbAllColors_unique[,'color']
 
-pca_important <- prcomp(t(datPCA), center = F,scale. = F)
+pca_important <- prcomp(t(datPCA), center = F,scale. = F,)
 
+
+
+dist_colors = dist(pca_important$rotation,diag = T,upper = T,method = 'manhattan')
+
+dist_colors <- data.frame(as.matrix(dist_colors))
+dist_colors <- tibble('color'=rownames(dist_colors),dist_colors)
+
+
+library(reshape)
+
+adj_mat = dist_colors %>% pivot_longer(cols = -color)
+
+
+adj_mat <- adj_mat %>% left_join(rgbAllColors_unique %>% select(color,hex,basecolor),by = c('color'='color')) %>% 
+  left_join(rgbAllColors_unique %>% select(color,hex,basecolor),by = c('name'='color'))
+
+colnames(adj_mat) <- c('source','target','distance','source_hex','source_base','target_hex','target_base')
+dim(adj_mat)
+head(adj_mat)
+
+adj_mat_filt <- adj_mat %>% filter(distance > 0.3)
+dim(adj_mat_filt)
+
+
+write.table(adj_mat,file = '~/Desktop/aRt/colorsnetwork.txt',quote = F,sep = '\t',row.names = F)
+write.table(adj_mat_filt,file = '~/Desktop/aRt/colorsnetwork_filter.txt',quote = F,sep = '\t',row.names = F)
+write.table(rgbAllColors_unique,file = '~/Desktop/aRt/metacolors.txt',quote = F,sep = '\t')
+
+head(rgbAllColors_unique)
 
 
 rgbAllColors_unique_aug <- cbind(rgbAllColors_unique,pca_important$rotation[rownames(rgbAllColors_unique),1:2])
+
+
 
 
 
