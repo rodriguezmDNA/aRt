@@ -46,7 +46,7 @@ dat <- rgbAllColors_unique_aug #%>% sample_n(40)
 dat %>%  
   ggplot(aes(x=PC1,y=PC2)) + #,color=superclass.name)) +
   geom_point(color=dat$hex,size=26,alpha=0.15) +
-  geom_text_repel(aes(label=basecolor),color=dat$hex,alpha=0.1) +
+  geom_text_repel(aes(label=basecolor),color=dat$hex,alpha=9) +
   theme_void()
   
 
