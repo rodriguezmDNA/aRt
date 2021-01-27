@@ -21,6 +21,9 @@ baseColor <- gsub('[0-9]|alice|antique|burly|spring|slate|steel|rosy|royal|dark|
      sandy|powder|pale|medium|light|midnight|navy|blush|indian|hot|dodger|deep','',rgbAllColors$color)
 rgbAllColors$basecolor <- baseColor
 
+rgbAllColors$basecolor <- ifelse(rgbAllColors$basecolor == '',rgbAllColors$color,rgbAllColors$basecolor)
+
+
 rgbAllColors_unique <- rgbAllColors[!duplicated(rgbAllColors$hex),]
 rownames(rgbAllColors_unique) <- rgbAllColors_unique$color
 
@@ -32,16 +35,22 @@ rownames(datPCA) = rgbAllColors_unique[,'color']
 pca_important <- prcomp(t(datPCA), center = F,scale. = F,)
 
 
-
+#### Distance based on PCA
+############################################################
 dist_colors = dist(pca_important$rotation,diag = T,upper = T,method = 'manhattan')
-
 dist_colors <- data.frame(as.matrix(dist_colors))
 dist_colors <- tibble('color'=rownames(dist_colors),dist_colors)
+dim(dist_colors)
 
+dist_colors[0:10,0:10]
+### Fix redundancy
+dist_colors[upper.tri(dist_colors)] <- NA
+dist_colors[0:10,0:10]
 
 library(reshape)
 
 adj_mat = dist_colors %>% pivot_longer(cols = -color)
+adj_mat <- adj_mat %>% filter(!is.na(value))
 
 
 adj_mat <- adj_mat %>% left_join(rgbAllColors_unique %>% select(color,hex,basecolor),by = c('color'='color')) %>% 
@@ -55,19 +64,31 @@ adj_mat_filt <- adj_mat %>% filter(distance > 0.3)
 dim(adj_mat_filt)
 
 
-write.table(adj_mat,file = '~/Desktop/aRt/colorsnetwork.txt',quote = F,sep = '\t',row.names = F)
-write.table(adj_mat_filt,file = '~/Desktop/aRt/colorsnetwork_filter.txt',quote = F,sep = '\t',row.names = F)
-write.table(rgbAllColors_unique,file = '~/Desktop/aRt/metacolors.txt',quote = F,sep = '\t')
+write.table(adj_mat,file = '~/Desktop/aRt/networks/color_networks_distance/colorsnetwork.txt',quote = F,sep = '\t',row.names = F)
+write.table(adj_mat_filt,file = '~/Desktop/aRt/networks/color_networks_distance/colorsnetwork_filter.txt',quote = F,sep = '\t',row.names = F)
+write.table(rgbAllColors_unique,file = '~/Desktop/aRt/networks/color_networks_distance/metacolors.txt',quote = F,sep = '\t')
 
-head(rgbAllColors_unique)
+
+adj_mat  %>% group_by(source_base) %>% summarise(count=n()) %>% 
+  ungroup() %>% arrange(desc(count)) %>% top_n(10) %>% select(1) %>% unlist
+
+adj_mat  %>% group_by(target_base) %>% summarise(count=n()) %>% 
+  ungroup() %>% arrange(desc(count)) %>% top_n(10) %>% select(1) %>% unlist
+
+
+
+####
+adj_mat
+  
+
+  
+
 
 
 rgbAllColors_unique_aug <- cbind(rgbAllColors_unique,pca_important$rotation[rownames(rgbAllColors_unique),1:2])
 
 
-
-
-
+####
 exData = rgbAllColors_unique_aug %>% filter(color %in% sample(rownames(rgbAllColors_unique_aug),30))
 
 customColors <- exData$color
