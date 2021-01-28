@@ -77,11 +77,9 @@ adj_mat  %>% group_by(target_base) %>% summarise(count=n()) %>%
 
 
 
-####
-adj_mat
-  
+degreeColor =adj_mat %>% group_by(target) %>% summarise(n=n())
 
-  
+####
 
 
 
