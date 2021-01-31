@@ -31,7 +31,7 @@ rotXY = function(x,y,theta){
   return (c(xP,yP))
 }
 
-rotation <- function(x,thet){
+rotation <- function(polyg,thet){
   t(apply(polyg,1,function(x){rotXY(x[1],x[2],theta = thet)}))
 }
 
