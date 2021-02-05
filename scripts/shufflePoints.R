@@ -59,8 +59,37 @@ for (p in seq(1,15)){
   }}
 
 
+##### Variations on octagon
+
+plot(0, 0,
+     xlim=c(-5,17),
+     ylim=c(-5,17),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (p in seq(1,15)){
+  for (q in seq(1,15)) {
+    oct <- octaFunc(p,q)
+    oct <- oct[sample(nrow(oct)),]
+    polygon(oct[,1],oct[,2])
+  }}
+
+
+plot(0, 0,
+     xlim=c(-5,17),
+     ylim=c(-5,17),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (p in seq(1,15)){
+  for (q in seq(1,15)) {
+    
+    choice <- sample(c(T,F),1,prob = c(0.9,1))
+    
+    if (choice) { oct <-  octaFunc(p,q) ; print(choice) } else {oct <- squFunc(p,q)}
+    #choice <- sample(c(T,F),1,prob = c(0.9,0.1))
+    #if (choice) { oct <- oct[sample(nrow(oct)),] }
+    oct <- oct[sample(nrow(oct)),]
+    polygon(oct[,1],oct[,2])
+  }}
 
 
 
 
-polygon(oct[,1],oct[,2])
+
