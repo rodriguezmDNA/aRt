@@ -119,5 +119,15 @@ hexFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
 
 
 
+#### Working on a pentagon
 
+plot(0, 0)
+pent <- rbind(
+  c(Xcenter,Ycenter+(he/2)),
+  c(Xcenter+wi,Ycenter+(he/2)),
+  c(Xcenter+wi+(wi/2),Ycenter-(he/2)),
+  c(Xcenter,Ycenter-he),
+  c(Xcenter-wi-(wi/2),Ycenter-(he/2)),
+  c(Xcenter-wi,Ycenter+(he/2)))
 
+polygon(pent[,1],pent[,2])
