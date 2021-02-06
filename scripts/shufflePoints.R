@@ -1,11 +1,11 @@
 
-
 squFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
-  oct <- rbind(
+  shape <- rbind(
       c(Xcenter+wi,Ycenter+he),
       c(Xcenter+wi,Ycenter-he),
       c(Xcenter-wi,Ycenter-he),
       c(Xcenter-wi,Ycenter+he))
+  return (shape)
   }
       
 
@@ -88,6 +88,34 @@ for (p in seq(1,15)){
     oct <- oct[sample(nrow(oct)),]
     polygon(oct[,1],oct[,2])
   }}
+
+
+
+
+
+
+Xcenter = 0
+Ycenter = 0
+wi = 0.4
+he = 0.4
+plot(0, 0)
+
+oct <- hexFunc()
+polygon(oct[,1],oct[,2])
+
+hexFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
+  shape <- rbind(
+    c(Xcenter,Ycenter+he),
+    c(Xcenter+wi,Ycenter+(he/2)),
+    c(Xcenter+wi,Ycenter),
+    c(Xcenter+wi,Ycenter-(he/2)),
+    c(Xcenter,Ycenter-he),
+    c(Xcenter-wi,Ycenter-(he/2)),
+    c(Xcenter-wi,Ycenter),
+    c(Xcenter-wi,Ycenter+(he/2)))
+  return (shape)
+}
+
 
 
 
