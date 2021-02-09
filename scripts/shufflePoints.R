@@ -73,27 +73,6 @@ for (p in seq(1,15)){
   }}
 
 
-plot(0, 0,
-     xlim=c(-5,17),
-     ylim=c(-5,17),
-     col = "white", xlab = "", ylab = "", axes=F)
-for (p in seq(1,15)){
-  for (q in seq(1,15)) {
-    
-    choice <- sample(c(T,F),1,prob = c(0.9,1))
-    
-    if (choice) { oct <-  octaFunc(p,q) ; print(choice) } else {oct <- squFunc(p,q)}
-    #choice <- sample(c(T,F),1,prob = c(0.9,0.1))
-    #if (choice) { oct <- oct[sample(nrow(oct)),] }
-    oct <- oct[sample(nrow(oct)),]
-    polygon(oct[,1],oct[,2])
-  }}
-
-
-
-
-
-
 Xcenter = 0
 Ycenter = 0
 wi = 0.4
@@ -117,19 +96,49 @@ hexFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
 }
 
 
-
-
 #### Working on a pentagon
 
 plot(0, 0)
 pentFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
   shape <- rbind(
-  c(Xcenter,Ycenter+(he/2)),
-  c(Xcenter+wi,Ycenter+(he/2)),
-  c(Xcenter+wi+(wi/2),Ycenter-(he/2)),
-  c(Xcenter,Ycenter-he),
-  c(Xcenter-wi-(wi/2),Ycenter-(he/2)),
-  c(Xcenter-wi,Ycenter+(he/2)))
+    c(Xcenter,Ycenter+(he/2)),
+    c(Xcenter+wi,Ycenter+(he/2)),
+    c(Xcenter+wi+(wi/2),Ycenter-(he/2)),
+    c(Xcenter,Ycenter-he),
+    c(Xcenter-wi-(wi/2),Ycenter-(he/2)),
+    c(Xcenter-wi,Ycenter+(he/2)))
   return (shape)
 }
-polygon(pent[,1],pent[,2])
+out <- pentFunc()
+plot(0, 0)
+polygon(out[,1],out[,2])
+
+
+plot(0, 0,
+     xlim=c(0,15),
+     ylim=c(0,15),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (p in seq(1,15)){
+  for (q in seq(1,15)) { 
+    
+    choice <- sample(1:4,1)
+    
+    if (choice == 1){
+      fig <-  octaFunc(p,q)
+    }
+    if (choice == 2){
+      fig <-  pentFunc(p,q)
+    }
+    if (choice == 3){
+      fig <-  squFunc(p,q)
+    } else{
+      
+      fig <-  hexFunc(p,q)
+    }
+    
+    scramble <- sample(c(T,F),1,prob = c(0.9,0.1))
+    if (scramble) { fig <- fig[sample(nrow(fig)),] }
+
+    polygon(fig[,1],fig[,2])
+  }}
+
