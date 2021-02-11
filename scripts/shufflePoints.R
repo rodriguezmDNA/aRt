@@ -161,3 +161,25 @@ for (i in 1:15){
 }}
 plot.new()
 points(0,0,pch=1,cex=3)
+
+
+
+
+
+squFuncHist <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
+  shape <- rbind(
+    c(Xcenter+wi,Ycenter+he) + runif(1,max = 0.5),
+    c(Xcenter+wi,Ycenter-he) + runif(1,max = 0.5),
+    c(Xcenter-wi,Ycenter-he) + runif(1,max = 0.5),
+    c(Xcenter-wi,Ycenter+he) + runif(1,max = 0.5))
+  return (shape)
+}
+
+
+plot(0, 0,
+     xlim=c(0,15),
+     ylim=c(0,15),
+     col = "white", xlab = "", ylab = "", axes=F)
+
+tst <- squFuncHist()
+polygon(tst[,1],tst[,2])
