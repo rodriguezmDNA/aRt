@@ -181,5 +181,30 @@ plot(0, 0,
      ylim=c(0,15),
      col = "white", xlab = "", ylab = "", axes=F)
 
-tst <- squFuncHist()
-polygon(tst[,1],tst[,2])
+
+
+
+
+hexFuncHist <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
+  shape <- rbind(
+    c(Xcenter,Ycenter+he)  + runif(1,max = 0.5),
+    c(Xcenter+wi,Ycenter+(he/2)) + runif(1,max = 0.5),
+    c(Xcenter+wi,Ycenter) + runif(1,max = 0.5),
+    c(Xcenter+wi,Ycenter-(he/2)) + runif(1,max = 0.5),
+    c(Xcenter,Ycenter-he) + runif(1,max = 0.5),
+    c(Xcenter-wi,Ycenter-(he/2)) + runif(1,max = 0.5),
+    c(Xcenter-wi,Ycenter) + runif(1,max = 0.5),
+    c(Xcenter-wi,Ycenter+(he/2)) + runif(1,max = 0.5) )
+  return (shape)
+}
+
+plot(0, 0,
+     xlim=c(-5,17),
+     ylim=c(-5,17),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (p in seq(1,15)){
+  for (q in seq(1,15)) {
+    fig <- hexFuncHist(p,q)
+    fig <- fig[sample(nrow(fig)),]
+    polygon(fig[,1],fig[,2])
+  }}
