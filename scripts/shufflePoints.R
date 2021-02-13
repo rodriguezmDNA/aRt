@@ -163,17 +163,27 @@ plot.new()
 points(0,0,pch=1,cex=3)
 
 
-
-
-
-squFuncHist <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4){
+squFuncHist <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4,maxHist=0){
   shape <- rbind(
-    c(Xcenter+wi,Ycenter+he) + runif(1,max = 0.5),
-    c(Xcenter+wi,Ycenter-he) + runif(1,max = 0.5),
-    c(Xcenter-wi,Ycenter-he) + runif(1,max = 0.5),
-    c(Xcenter-wi,Ycenter+he) + runif(1,max = 0.5))
+    c(Xcenter+wi,Ycenter+he) - runif(1,max = maxHist),
+    c(Xcenter+wi,Ycenter-he) - runif(1,max = maxHist),
+    c(Xcenter-wi,Ycenter-he) - runif(1,max = maxHist),
+    c(Xcenter-wi,Ycenter+he) - runif(1,max = maxHist))
   return (shape)
 }
+
+
+plot(0, 0,
+     xlim=c(-5,17),
+     ylim=c(-5,17),
+     col = "white", xlab = "", ylab = "", axes=F)
+
+for (p in seq(1,15)){
+  for (q in seq(1,15)) {
+    fig <- squFuncHist(p,q,maxHist = runif(1,0,0.5))
+    #fig <- fig[sample(nrow(fig)),]
+    polygon(fig[,1],fig[,2])
+  }}
 
 
 plot(0, 0,
@@ -195,8 +205,6 @@ hexFuncHist <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4,maxHist=0){
 }
 
 
-
-
 plot(0, 0,
      xlim=c(-5,17),
      ylim=c(-5,17),
@@ -205,6 +213,8 @@ plot(0, 0,
 for (p in seq(1,15)){
   for (q in seq(1,15)) {
     fig <- hexFuncHist(p,q,maxHist = runif(1,0,0.5))
-    #fig <- fig[sample(nrow(fig)),]
+    fig <- fig[sample(nrow(fig)),]
     polygon(fig[,1],fig[,2])
   }}
+
+
