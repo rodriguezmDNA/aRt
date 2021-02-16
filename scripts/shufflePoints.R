@@ -229,3 +229,41 @@ for (p in seq(1,15)){
   }}
 
 
+
+
+
+
+plot(0, 0,
+     xlim=c(0,15),
+     ylim=c(0,15),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (p in seq(1,15)){
+  for (q in seq(1,15)) { 
+    
+    choice <- sample(1:5,1)
+    w = sample(seq(0.3,0.8,0.5),1)
+    h = sample(seq(0.3,0.8,0.5),1)
+    if (choice == 1){
+      fig <-  octaFunc(p,q,w,h)
+    }
+    if (choice == 2){
+      fig <-  pentFunc(p,q,w,h,maxHist = 0.5)
+    }
+    if (choice == 3){
+      fig <-  squFuncHist(p,q,w,h,maxHist = 0.5)
+    } 
+    if (choice == 4){
+      
+      fig <-  hexFuncHist(p,q,w,h,maxHist = 0.5)
+    }
+    
+    if (choice != 5){
+      scramble <- sample(c(T,F),1,prob = c(0.9,0.1))
+      if (scramble) { fig <- fig[sample(nrow(fig)),] }
+      
+      polygon(fig[,1],fig[,2])
+    }
+    else(
+      points(p,q,pch=1,cex=sample(seq(0.5,3,0.5),1))
+    )
+  }}
