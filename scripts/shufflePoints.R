@@ -228,7 +228,6 @@ octaFunc <- function(Xcenter = 0,Ycenter = 0,wi = 0.4,he = 0.4,maxHist=0){
   return (oct)
 }
 
-
 plot(0, 0,
      xlim=c(-5,17),
      ylim=c(-5,17),
@@ -237,7 +236,7 @@ plot(0, 0,
 for (p in seq(1,15)){
   for (q in seq(1,15)) {
     fig <- octaFunc(p,q,maxHist = runif(1,0,0.5))
-    #fig <- fig[sample(nrow(fig)),]
+    fig <- fig[sample(nrow(fig)),]
     polygon(fig[,1],fig[,2])
   }}
 
