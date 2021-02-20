@@ -32,7 +32,7 @@ View(rgbAllColors_unique)
 datPCA = rgbAllColors_unique[,1:3]
 rownames(datPCA) = rgbAllColors_unique[,'color']
 
-pca_important <- prcomp(t(datPCA), center = F,scale. = F,)
+pca_important <- prcomp(t(datPCA), center = F,scale. = F,rank. = 5)
 
 
 #### Distance based on PCA
@@ -83,7 +83,7 @@ degreeColor =adj_mat %>% group_by(target) %>% summarise(n=n())
 
 
 
-rgbAllColors_unique_aug <- cbind(rgbAllColors_unique,pca_important$rotation[rownames(rgbAllColors_unique),1:2])
+rgbAllColors_unique_aug <- cbind(rgbAllColors_unique,pca_important$rotation[rownames(rgbAllColors_unique),1:3])
 
 
 ####
@@ -94,7 +94,7 @@ names(customColors) <- exData$hex
 
 dat <- rgbAllColors_unique_aug #%>% sample_n(40)
 dat %>%  
-  ggplot(aes(x=PC1,y=PC2)) + #,color=superclass.name)) +
+  ggplot(aes(x=PC2,y=PC3)) + #,color=superclass.name)) +
   geom_point(color=dat$hex,size=26,alpha=0.15) +
   geom_text_repel(aes(label=basecolor),color=dat$hex,alpha=9) +
   theme_void()
