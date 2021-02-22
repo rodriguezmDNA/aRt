@@ -99,5 +99,20 @@ dat %>%
   geom_text_repel(aes(label=basecolor),color=dat$hex,alpha=9) +
   theme_void()
   
+######### K-means
+library(class)
+
+
+knnData <- rgbAllColors_unique
+
+head(knnData)
+head(knnData[,1:3])
+
+
+length(unique(knnData$basecolor))
+
+km.res <- kmeans(knnData[,1:3], 60, nstart = 25)
+
+head(km.res$centers)
 
 
