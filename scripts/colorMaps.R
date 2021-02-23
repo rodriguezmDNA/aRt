@@ -101,7 +101,7 @@ dat %>%
   
 ######### K-means
 library(class)
-
+##https://afit-r.github.io/kmeans_clustering
 
 knnData <- rgbAllColors_unique
 
