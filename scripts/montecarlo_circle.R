@@ -8,13 +8,14 @@ plot(0, 0,
      ylim=c(-2,2),
      col = "white", xlab = "", ylab = "", axes=F)
 points(center,center,pch=20)
-for (i in seq(1,100000)){
+for (i in seq(1,10000)){
   x <- runif(1,-1.5,1.5)
   y <- runif(1,-1.5,1.5)
-  if (((center-x)**2 + (center-y)**2) >= radius**2){
-    col <- sample(colors(),1)
+  if (((center-x)**2 + (center-y)**2) <= radius**2){
+    #col <- sample(colors(),1)
     #pch <- sample(1:12,1)
-    points(x,y,pch='.',col=col)
+    #points(x,y,pch='.',col=col)
+    points(x,y,pch='*')
   }
 }
 
@@ -22,18 +23,19 @@ for (i in seq(1,100000)){
 #### Cross
 center = 0 
 l = 0.5
-plot(0, 0,
-     xlim=c(-2,2),
-     ylim=c(-2,2),
-     col = "white", xlab = "", ylab = "", axes=F)
-points(center,center,pch=20)
-for (i in seq(1,10000)){
+# plot(0, 0,
+#      xlim=c(-2,2),
+#      ylim=c(-2,2),
+#      col = "white", xlab = "", ylab = "", axes=F)
+#points(center,center,pch=20)
+for (i in seq(1,1000)){
   x <- runif(1,-1.5,1.5)
   y <- runif(1,-1.5,1.5)
-  if ( abs(center-x) <= l | abs(center-y) <= l){
+  if ( abs(x-center) > l | abs(y-center) > l){
     #col <- sample(colors(),1)
     #pch <- sample(1:12,1)
     #points(x,y,pch='.',col=col)
     points(x,y,pch='.')
   }
 }
+
