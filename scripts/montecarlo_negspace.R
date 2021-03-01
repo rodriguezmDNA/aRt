@@ -54,3 +54,20 @@ for (i in seq(1,30000/2)){
   }
 }
 
+
+
+#### Hourglass
+plot(0, 0,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (i in seq(1,30000/2)){
+  x <- runif(1,-1.5,1.5)
+  y <- runif(1,-1.5,1.5)
+  if ( (abs(x-center)/abs(y-center) < l**2) | (abs(x-center)/abs(y-center) < l**2)){
+    #col <- sample(colors(),1)
+    #pch <- sample(1:12,1)
+    #points(x,y,pch='.',col=col)
+    points(x,y,pch='.')
+  }
+}
