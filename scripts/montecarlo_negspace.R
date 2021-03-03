@@ -71,3 +71,20 @@ for (i in seq(1,30000/2)){
     points(x,y,pch='.')
   }
 }
+
+
+#### Wierd shape
+plot(0, 0,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     col = "white", xlab = "", ylab = "", axes=F)
+for (i in seq(1,30000/2)){
+  x <- runif(1,-1.5,1.5)
+  y <- runif(1,-1.5,1.5)
+  if ( ( (x-center)/(y-center) < cos(l) ) & (x-center)/(y-center) < tan(l) ){
+    #col <- sample(colors(),1)
+    #pch <- sample(1:12,1)
+    #points(x,y,pch='.',col=col)
+    points(x,y,pch='.')
+  }
+}
