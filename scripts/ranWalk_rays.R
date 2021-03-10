@@ -4,12 +4,13 @@ plot(0, 0,
      ylim=c(-10,10),
      col = "white", xlab = "", ylab = "", axes=F)
 
+
 for (xprev in seq(-9.5,9.5,1)){
   for (yprev in seq(-9.5,9.5,1)){
     lineColor=sample(colors(),1)
     points(xprev,yprev)
-    for (i in seq(1:5)){
-      
+    for (i in seq(1:6)){
+            
       xnew <- xprev +runif(1,-0.5,0.5)
       ynew <- yprev +runif(1,-0.5,0.5)
       
@@ -24,12 +25,12 @@ for (xprev in seq(-9.5,9.5,1)){
       lines(lineCoords,col=lineColor)
       #lines(1/t(lineCoords))
       
-      xprev <- xnew
-      yprev <- ynew
+      # xprev <- xnew
+      # yprev <- ynew
       
     }
     
   } 
 }
- 
+
 
