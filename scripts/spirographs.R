@@ -4,7 +4,7 @@ valY <- function(t,a,b){ ( (a-b) * sin(t) ) + b*sin(t* ((a/b)-1))}
 
 x = c()
 y = c()
-a=80
+a=65.5
 b=-30
 for (t in seq(2,300,2.5)){
   x <- c(x,valX(t,a,b))
