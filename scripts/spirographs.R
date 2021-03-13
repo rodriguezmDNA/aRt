@@ -1,3 +1,4 @@
+## https://cdr6934.medium.com/how-i-used-excel-to-create-abstract-album-artwork-fee740d4414f
 library(tidyverse)
 valX <- function(t,a,b){ ( (a-b) * cos(t) ) + b*cos(t* ((a/b)-1))}
 valY <- function(t,a,b){ ( (a-b) * sin(t) ) + b*sin(t* ((a/b)-1))}

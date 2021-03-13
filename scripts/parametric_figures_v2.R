@@ -1,20 +1,20 @@
 ##http://www.sineofthetimes.org/the-art-of-parametric-equations-2/
-
+### Messing around
 library(tidyverse)
-newX <- function(t,a,b,c){  (cos(a*t)) + ((cos(b*t))/2)  + ((sin(c*t))/3)      }
-newY <- function(t,a,b,c){  (sin(a*t)) + ((sin(b*t))/2)  + ((cos(c*t))/3)      }
+newX <- function(t,a,b){  (cos(a*t)) + ((cos(b*t))/2)    }
+newY <- function(t,a,b){  (sin(a*t)) + ((sin(b*t))/2)       }
 
 
 a=1
-b=2
-c=3
+b=5
 xa = c()
 ya = c()
-for (t in seq(1,10,.01)){
-  xa <- c(xa,newX(t,a,b,c))
-  ya <- c(ya,newY(t,a,b,c))
+for (t in seq(1,1000,1)){
+  xa <- c(xa,newX(t,a,b))
+  ya <- c(ya,newY(t,a,b))
 }
-pltLimit <- 3
+
+pltLimit <- max(max(xa),max(ya)) 
 plot(0, 0,
      xlim=c(-pltLimit,pltLimit),
      ylim=c(-pltLimit,pltLimit),
