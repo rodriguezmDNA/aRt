@@ -85,7 +85,7 @@ does_intersect <- function(a, b, c, d, smidgin = 1e-6) {
 }
 
 set.seed(1)
-df <- rapidly_exploring_random_tree() %>% mutate(id = 1:nrow(.))
+df <- rapidly_exploring_random_tree(100) %>% mutate(id = 1:nrow(.))
 
 # Create plot
 p <- ggplot() +
