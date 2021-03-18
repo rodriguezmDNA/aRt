@@ -2,18 +2,23 @@
 ### Messing around
 library(tidyverse)
 
-newX <- function(t){  (sin(t))     }
-newY <- function(t){  (cos(t))   }
+newX <- function(t,center){  (sin(t)+center)     }
+newY <- function(t,center){  (cos(t)+center)   }
 
 #makeParametricCurves <- function(a,b,maxReps=10,step=.01){
 xa = c()
 ya = c()
 for (t in seq(1,10,0.5)){
-  xa <- c(xa,newX(t))
-  ya <- c(ya,newY(t))
+  xa <- c(xa,newX(t,3))
+  ya <- c(ya,newY(t,3))
 }
-out2 <- data.frame( cbind(xa,ya))
-  #return (out2)
+out3 <- data.frame( cbind(xa,ya))
+
+a = cbind(out2,'a')
+b = cbind(out3,'b')
+
+data.frame(c(a,b))
+#return (out2)
 #}
 
 ggplot(out2,aes(x=xa,y=ya)) +
