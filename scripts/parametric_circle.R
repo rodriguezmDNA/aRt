@@ -10,7 +10,7 @@ newY <- function(t,Ycenter){  (cos(t)+Ycenter)   }
 makeCircle <- function(Xcenter=0,Ycenter=0,group='a'){
     xa = c()
     ya = c()
-    for (t in seq(1,1000,1)){
+    for (t in seq(1,10,.05)){
       xa <- c(xa,newX(t,Xcenter))
       ya <- c(ya,newY(t,Ycenter))
     }
@@ -19,16 +19,34 @@ makeCircle <- function(Xcenter=0,Ycenter=0,group='a'){
   return (out)
 }
 
-listOfCircles <- list(makeCircle(0,0,'a'),
-                      makeCircle(0,3,'b'),
-                      makeCircle(3,0,'c'),
-                      makeCircle(3,3,'d'))
+listOfCircles = list()
+seq = 1
+for (i in seq(0,4)){
+  for (j in seq(0,4)){
+    grp = letters[seq]
+    seq = seq + 1
+    listOfCircles[[grp]] = makeCircle(i,j,grp)
+}}
+length(listOfCircles)
+names(listOfCircles)
 
 out2 = do.call('rbind',listOfCircles)
 tail(out2)
 
+emptyCanvas <- function(pltLimit = 5 ){
+  plot(0, 0,
+       xlim=c(-pltLimit,pltLimit),
+       ylim=c(-pltLimit,pltLimit),
+       col = "transparent", xlab = "", ylab = "", axes=F)
+}
+emptyCanvas()
+for (name in names(listOfCircles)){
+  lines(out2[out2['group'] == name,])
+}
+
+
 ggplot(out2,aes(x=xa,y=ya)) +
-  geom_path(aes(color=group)) +
+  geom_path(aes(size=group)) +
   #theme_void()
   theme(
     axis.ticks =   element_blank(),
