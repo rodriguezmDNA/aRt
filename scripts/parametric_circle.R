@@ -7,10 +7,10 @@ newY <- function(t,Ycenter){  (cos(t)+Ycenter)   }
 
 #makeParametricCurves <- function(a,b,maxReps=10,step=.01){
 
-makeCircle <- function(Xcenter=0,Ycenter=0,group='a'){
+makeCircle <- function(Xcenter=0,Ycenter=0,group='a',max=10,step=.01){
     xa = c()
     ya = c()
-    for (t in seq(1,10,.05)){
+    for (t in seq(1,max,step)){
       xa <- c(xa,newX(t,Xcenter))
       ya <- c(ya,newY(t,Ycenter))
     }
@@ -18,6 +18,26 @@ makeCircle <- function(Xcenter=0,Ycenter=0,group='a'){
   out$group <- group
   return (out)
 }
+
+
+
+
+#### Disappearing circles
+emptyCanvas(10)
+for (i in seq(-10,10,2)){
+  for (j in seq(-10,10,2)){
+  points(makeCircle(i+2,j+2,max=abs(i)+abs(j)+1,step = .5),pch=".")
+}}
+
+#### Shapes
+emptyCanvas(10)
+for (i in seq(-10,10,2)){
+  for (j in seq(-10,10,2)){
+    lines(makeCircle(i+2,j+2,max=abs(i)+abs(j)+1,step = abs(i)+.1*abs(j)),pch=".")
+  }}
+
+
+
 
 listOfCircles = list()
 seq = 1
@@ -45,8 +65,9 @@ for (name in names(listOfCircles)){
 }
 
 
-ggplot(out2,aes(x=xa,y=ya)) +
-  geom_path(aes(size=group)) +
+
+ggplot(makeCircle(max=10,step=.01),aes(x=xa,y=ya)) +
+  geom_path(aes(size=group)) #+
   #theme_void()
   theme(
     axis.ticks =   element_blank(),
