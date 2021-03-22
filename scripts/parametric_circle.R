@@ -37,6 +37,14 @@ for (i in seq(-10,10,2)){
   }}
 
 
+#### Shapes
+emptyCanvas(10)
+for (i in seq(-10,10,2)){
+  for (j in seq(-10,10,2)){
+    lines(makeCircle(i+2,j+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
+  }}
+
+
 
 
 listOfCircles = list()
