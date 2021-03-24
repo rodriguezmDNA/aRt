@@ -45,6 +45,13 @@ for (i in seq(-10,10,2)){
   }}
 
 
+#### Disappearing
+emptyCanvas(20)
+for (i in seq(15,1,-1)){
+  for (j in seq(15,1,-1)){
+    lines(makeCircle(i+2,j+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
+  }}
+
 
 
 listOfCircles = list()
