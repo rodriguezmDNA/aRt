@@ -52,6 +52,15 @@ for (i in seq(15,1,-1)){
     lines(makeCircle(i+2,j+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
   }}
 
+#### wobbly
+emptyCanvas(10)
+for (i in seq(-10,10,0.7)){
+  for (j in seq(-10,10,2.7)){
+    lines(makeCircle(i+2,j+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
+  }}
+
+
+
 listOfCircles = list()
 seq = 1
 for (i in seq(0,4)){
