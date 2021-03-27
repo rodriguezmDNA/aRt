@@ -72,6 +72,21 @@ for (i in seq(10,-10,-0.7)){
   for (j in seq(10,-10,-2.7)){
     lines(makeCircle(j+2,i+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
   }}
+
+
+#### Griddy
+emptyCanvas(10)
+for (i in seq(10,-10,-0.7)){
+  for (j in seq(10,-10,-2.7)){
+    lines(makeCircle(j+2,i+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
+  }}
+for (i in seq(-10,10,0.7)){
+  for (j in seq(-10,10,2.7)){
+    lines(makeCircle(i+2,j+2,max=1+((abs(j))/abs(i)),step = .05),pch=".")
+  }}
+
+
+
 ########################################
 
 listOfCircles = list()
