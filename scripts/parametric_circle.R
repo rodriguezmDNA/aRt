@@ -86,6 +86,19 @@ for (i in seq(-10,10,0.7)){
   }}
 
 
+#### groovy
+emptyCanvas(10)
+for (i in seq(-10,10,2)){
+  for (j in seq(-10,10,2)){
+    lines(makeCircle(i+2,j+2,max=abs(i)+abs(j)+1,step = abs(i)+abs(j)),pch=".")
+  }}
+
+for (i in seq(-10,10,1)){
+  for (j in seq(-10,10,1)){
+    lines(makeCircle(j+2,i+2,max=abs(i)+abs(j)+1,step = abs(j)+abs(i)),pch=".")
+  }}
+
+
 
 ########################################
 
