@@ -99,6 +99,15 @@ for (i in seq(-10,10,1)){
   }}
 
 
+#### Circle to plot circles
+emptyCanvas(10)
+tmp <- makeCircle(0,1,max=20,step = 1)
+for (i in seq(1,nrow(tmp))){
+  #tmp[i,'xa']
+  points(makeCircle(tmp[i,'xa']*i,tmp[i,'ya']*i,max=30,step = 1))
+}
+
+
 
 ########################################
 
