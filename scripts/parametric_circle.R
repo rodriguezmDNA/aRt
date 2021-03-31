@@ -99,13 +99,15 @@ for (i in seq(-10,10,1)){
   }}
 
 
-#### Circle to plot circles
-emptyCanvas(10)
-tmp <- makeCircle(0,1,max=20,step = 1)
-for (i in seq(1,nrow(tmp))){
-  #tmp[i,'xa']
-  points(makeCircle(tmp[i,'xa']*i,tmp[i,'ya']*i,max=30,step = 1))
-}
+#### Peacock tail
+emptyCanvas(100)
+tmp <- makeCircle(0,1,max=10,step = .5)
+nrow(tmp)
+for (j in seq(1,nrow(tmp))){
+  for (i in seq(1,nrow(tmp))){
+  #points(tmp[i,'xa']*20,tmp[i,'ya']*20)
+  lines(makeCircle(tmp[i,'xa']*j,tmp[i,'ya']*j,max=10,step = .2),pch='.')
+}}
 
 
 
