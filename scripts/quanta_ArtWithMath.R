@@ -15,7 +15,7 @@ getCurve <- function(){
   b = sample(seq(1,11),1)
   c = sample(seq(1,15),1)
   d = sample(seq(1,11),1)
-  print(c(a,b,c,d))
+  #print(c(a,b,c,d))
   for (t in seq(0,sample(seq(9,15),1),.01)){
     out <- rbind(out,cbind(x(t,a=a,b=b,c=c,d=d),y(t,a=a,b=b,c=c,d=d)))
   }
@@ -39,13 +39,17 @@ grpA = data.frame(getCurve())
 grpB = data.frame(getCurve() + 2)
 
 #### Grid of parametric curves
-emptyCanvas(-10)
-for (i in seq(-15,15,3)){
-  for (j in seq(-15,15,3)){
-    grpA = data.frame(getCurve())
-    grpA[,1] <- grpA[,1] + i
-    grpA[,2] <- grpA[,2] + j
-    lines(grpA[,1],grpA[,2])
-}}
+drawGrid <- function(){
+  emptyCanvas(10)
+  for (i in seq(0,9,3)){
+    for (j in seq(0,9,3)){
+      grpA = data.frame(getCurve())
+      grpA[,1] <- grpA[,1] + i
+      grpA[,2] <- grpA[,2] + j
+      lines(grpA[,1],grpA[,2])
+    }}
+  }
 
+drawGrid()
+drawGrid()
 
