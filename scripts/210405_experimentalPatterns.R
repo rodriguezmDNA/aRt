@@ -111,9 +111,7 @@ for (i in seq(-256,256,1)){
     }
   }}
 
-
-##### Mixed pattern
-
+## Mixed pattern
 emptyCanvas(100)
 for (i in seq(-256,0,1)){
   for (j in seq(-256,0,1)){
@@ -122,8 +120,40 @@ for (i in seq(-256,0,1)){
       points(i,j,pch='.')
       points(-i,-j,pch='.')
     } 
-    if (cos(i)/tan(j) <= sin(i)){
+    if (sin(i)/tan(j) <= cos(i)){
       points(-i,j,pch='.')
       points(i,-j,pch='.')
     }
+  }}
+
+#### 4 conditions
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+    if (tan(i)/cos(j) <= sin(i)){
+      #print('True')
+      points(i,j,pch='.')
+    } 
+    if (cos(i)/tan(j) <= sin(i)){
+      points(-i,j,pch='.')
+    }
+    if (sin(i)/cos(j) <= tan(i)){
+      points(i,-j,pch='.')
+    } 
+    if (sin(i)/tan(j) <= cos(i)){
+      points(-i,-j,pch='.')
+    }
+    
+  }}
+
+##### Diamond pattern
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+  if (sin(i)/cos(j) <= tan(i)){
+    points(i,-j,pch='.')
+    points(-i,-j,pch='.')
+    points(i,j,pch='.')
+    points(-i,j,pch='.')
+  } 
   }}
