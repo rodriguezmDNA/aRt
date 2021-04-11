@@ -1,4 +1,12 @@
 
+emptyCanvas <- function(pltLimit = 5 ){
+  plot(0, 0,
+       xlim=c(-pltLimit,pltLimit),
+       ylim=c(-pltLimit,pltLimit),
+       col = "transparent", xlab = "", ylab = "", axes=F)
+}
+
+
 #### Repeating patterns
 
 emptyCanvas(100)
@@ -156,4 +164,20 @@ for (i in seq(-256,0,1)){
     points(i,j,pch='.')
     points(-i,j,pch='.')
   } 
+  }}
+
+
+
+
+##### Bar code
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+    if (sin(i)*cos(j) <= tan(i)){
+      points(i,j,pch='.')
+      points(j,i,pch='.') ##Invert to make it a criss-cross pattern
+      #points(-i,-j,pch='.')
+      #points(j,i,pch='.') 
+      #points(-j,-i,pch='.')
+    } 
   }}
