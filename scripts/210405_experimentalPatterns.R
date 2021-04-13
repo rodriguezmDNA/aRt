@@ -198,3 +198,25 @@ for (i in seq(-256,0,1)){
       #points(-j,-i,pch='.')
     } 
   }}
+
+
+
+##### 20210413
+### Mirrored triangles
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+    if (sin(i)*cos(j) <= tan(i)){
+      #points(i,j+i,pch='.')
+      points(abs(j-i),i+j,pch='.') ##Invert to make it a criss-cross pattern
+      points(-abs(j-i),-(i+j),pch='.') ##Invert to make it a criss-cross pattern
+      
+      points(i,j+i,pch='.')
+      points(abs(i),abs(j+i),pch='.')
+      
+      
+      #points(-i,-j,pch='.')
+      #points(j,i,pch='.') 
+      #points(-j,-i,pch='.')
+    } 
+  }}
