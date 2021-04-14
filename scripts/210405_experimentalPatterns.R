@@ -220,3 +220,46 @@ for (i in seq(-256,0,1)){
       #points(-j,-i,pch='.')
     } 
   }}
+
+
+
+##### 20210414
+### GGplot lattice
+out <- cbind(0,0)
+emptyCanvas(100)
+for (i in seq(0,256,1)){
+  for (j in seq(0,256,1)){
+    if (sin(i)*cos(j) <= tan(i)){
+    
+      out <- rbind(out,cbind(abs(j-i),i+j))
+      #points(i,j+i,pch='.')
+      points(abs(j-i),i+j,pch=5) ##Invert to make it a criss-cross pattern
+      #points(-abs(j-i),-(i+j),pch='.') ##Invert to make it a criss-cross pattern
+      
+      # points(i,j+i,pch='.')
+      # points(abs(i),abs(j+i),pch='.')
+      
+      
+      #points(-i,-j,pch='.')
+      #points(j,i,pch='.') 
+      #points(-j,-i,pch='.')
+    } 
+  }}
+
+outDF <- data.frame(out)
+head(outDF)
+
+library(ggplot2)
+
+ggplot(outDF,aes(x=X1,y=X2)) +
+  geom_point(color='white',size=0.05) +
+  #theme_void()
+  theme(
+    axis.ticks =   element_blank(),
+    axis.text =    element_blank(),
+    axis.title =   element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background=element_rect(fill = "black"),
+    panel.background = element_rect(fill = 'black'))
+NULL
