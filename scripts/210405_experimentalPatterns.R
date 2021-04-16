@@ -265,7 +265,7 @@ ggplot(outDF,aes(x=X1,y=X2)) +
 NULL
 
 
-##### 20210414
+##### 20210415
 ### Mirrored different condition
 emptyCanvas(100)
 for (i in seq(-256,0,1)){
@@ -279,3 +279,29 @@ for (i in seq(-256,0,1)){
 
     } 
   }}
+
+
+##### 20210416
+### four way comp
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+    if (sin(i)*cos(j) <= tan(i)){
+      #points(i,j+i,pch='.')
+      points(abs(j-i),i+j,pch='.') ##Invert to make it a criss-cross pattern
+    }
+    if (sin(i)*tan(j) <=  cos(i)){
+      points(-(j-i),-(abs(i+j)),pch='.') ##Invert to make it a criss-cross pattern
+      
+    } 
+    if (cos(i)/tan(j) <=  sin(i)){
+      points( -abs(j-i),abs(i+j),pch='.') ##Invert to make it a criss-cross pattern
+      
+    } 
+    
+    if (cos(i)/sin(j) <=  tan(i)){
+      points( abs(j-i),abs(i+j),pch='.') ##Invert to make it a criss-cross pattern
+      
+    } 
+  }}
+
