@@ -263,3 +263,19 @@ ggplot(outDF,aes(x=X1,y=X2)) +
     plot.background=element_rect(fill = "black"),
     panel.background = element_rect(fill = 'black'))
 NULL
+
+
+##### 20210414
+### Mirrored different condition
+emptyCanvas(100)
+for (i in seq(-256,0,1)){
+  for (j in seq(-256,0,1)){
+    if (sin(i)*cos(j) <= tan(i)){
+      #points(i,j+i,pch='.')
+      points(abs(j-i),i+j,pch='.') ##Invert to make it a criss-cross pattern
+    }
+    if (sin(i)*tan(j) <=  cos(i)){
+        points(-(j-i),-(abs(i+j)),pch='.') ##Invert to make it a criss-cross pattern
+
+    } 
+  }}
