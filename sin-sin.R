@@ -46,10 +46,18 @@ sinsin <- function(a=2,b=2,newCanvas=FALSE,makePlot=FALSE){
 return(out)
 }
 
-
 emptyCanvas(20)
 for (i in seq(1,10,4)){
   for (j in seq(1,10,2)){
     emptyCanvas(20)
     lines(sinsin(j,i))
 }}
+
+
+##### 20210419
+### Concentric circles
+emptyCanvas(20)
+for (i in seq(-10,2,4)){ 
+  for (j in seq(-10,1,2)){
+    lines(sinsin(j+i,i+j))
+  }}
