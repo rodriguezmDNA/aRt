@@ -61,3 +61,19 @@ for (i in seq(-10,2,4)){
   for (j in seq(-10,1,2)){
     lines(sinsin(j+i,i+j))
   }}
+
+
+##### 20210420
+### Groovy
+emptyCanvas(20)
+for (i in seq(-10,2,4)){ 
+  for (j in seq(-10,1,2)){
+    lines(sinsin(abs(j-i),-abs(i-j)))
+  }}
+
+### Jupiter and beyond
+emptyCanvas(20)
+for (i in seq(-10,2,4)){ 
+  for (j in seq(-10,1,2)){
+    lines(sinsin(j+i,(i*i/(j+i)) ))
+  }}
