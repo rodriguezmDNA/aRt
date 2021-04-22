@@ -79,7 +79,7 @@ for (i in seq(-10,2,4)){
   }}
 
 
-##### 20210420
+##### 20210421
 ### sin - cos
 x <- function(t,a=2,b=2) { a*sin(t) -   cos(t*b)}
 y <- function(t,a=2,b=2) { a*sin(t) -   cos(t*b)}
@@ -103,4 +103,13 @@ emptyCanvas(20)
 for (i in seq(0,12,4)){ 
   for (j in seq(0,12,2)){
     lines(sincos(i-j,j+i))
+  }}
+
+
+##### 20210422
+### punto de fuga
+emptyCanvas(20)
+for (i in seq(-10,2,4)){ 
+  for (j in seq(-10,1,2)){
+    lines(sincos(abs(j+i)**2,abs(i-j)**2))
   }}
