@@ -113,3 +113,33 @@ for (i in seq(-10,2,4)){
   for (j in seq(-10,1,2)){
     lines(sincos(abs(j+i)**2,abs(i-j)**2))
   }}
+
+
+
+
+
+##### 20210423
+### tantan
+x <- function(t,a=2,b=2) { a*tan(t) -   tan(t*b)}
+y <- function(t,a=2,b=2) { a*tan(t) -   tan(t*b)}
+tantan <- function(a=2,b=2,newCanvas=FALSE,makePlot=FALSE){
+  out <- rbind(cbind(x(0),y(0)))
+  if (newCanvas) {emptyCanvas()}
+  for (t in seq(0,10,.01)){
+    xP <- x(t,a)
+    yP <- y(t,b)
+    out <- rbind(out,cbind(xP,yP))
+    if (makePlot) {lines(xP,yP,pch='.')}
+    
+  }
+  out <- out[-1,]
+  out <- data.frame(out)
+  colnames(out) <- c('X','Y')
+  return(out)
+}
+
+### tangent
+emptyCanvas(20)
+for (i in seq(0,10,2)){ 
+    lines(tantan(0, i))
+  }
