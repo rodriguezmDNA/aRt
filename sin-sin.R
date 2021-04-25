@@ -145,7 +145,7 @@ for (i in seq(0,10,2)){
   }
 
 
-##### 20210423
+##### 20210424
 ## limiting lines
 emptyCanvas(20)
 for (i in seq(0,10,2)){ 
@@ -155,5 +155,16 @@ for (i in seq(0,10,2)){
   lines(tail(tantan(i, 0),500))
 }
 
+
+##### 20210425
+## adding color
+emptyCanvas(20)
+for (i in seq(0,10,2)){ 
+  #lines(head(tantan(0, i),150))
+  #lines(head(tantan(i, 0),150))
+  color = sample(colors(),1)
+  lines(tail(tantan(0, i),500),col=color)
+  lines(tail(tantan(i, 0),500),col=color)
+}
 
 
