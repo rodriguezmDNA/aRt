@@ -143,3 +143,17 @@ emptyCanvas(20)
 for (i in seq(0,10,2)){ 
     lines(tantan(0, i))
   }
+
+
+##### 20210423
+## limiting lines
+emptyCanvas(20)
+for (i in seq(0,10,2)){ 
+  #lines(head(tantan(0, i),150))
+  #lines(head(tantan(i, 0),150))
+  lines(tail(tantan(0, i),500))
+  lines(tail(tantan(i, 0),500))
+}
+
+
+
