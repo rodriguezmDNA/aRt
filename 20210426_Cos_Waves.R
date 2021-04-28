@@ -20,3 +20,22 @@ for (i in seq(-10,10,1)){
     points(j,tan(j)+i,pch='.',col='black')
   }
 }
+
+
+##### 20210427
+### Lines - sincos
+emptyCanvas(10)
+for (i in seq(-10,10,1)){
+  sinF <- rbind(cbind(0,0))
+  cosF <- rbind(cbind(0,0))
+  for (j in seq(-10,10,.1)){
+    sinF <- rbind(sinF,cbind(i+j,sin(j)+i))
+    cosF <- rbind(cosF,cbind(i+j,cos(j)+i))
+  }
+  lines(sinF[-1,]+i)
+  lines(cosF[-1,]+i)
+}
+
+
+
+
