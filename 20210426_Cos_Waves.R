@@ -59,7 +59,36 @@ for (i in seq(-10,10,1)){
 
 
 ##### 20210430
-### 
+### wavy cos-sin sin-cos
+emptyCanvas(10)
+for (i in seq(-10,10,1)){
+  sinF <- rbind(cbind(0,0))
+  cosF <- rbind(cbind(0,0))
+  hLine <- rbind(cbind(0,0))
+  vLine <- rbind(cbind(0,0))
+  for (j in seq(-10,10,.1)){
+    sinF <- rbind(sinF,cbind(cos(j+i)+j,sin(j)+i))
+    cosF <- rbind(cosF,cbind(sin(j+i)+j,cos(j)+i))
+  }
+  lines(sinF[-1,])
+  lines(cosF[-1,])
+}
+
+
+### ribbon
+emptyCanvas(10)
+for (i in seq(-10,10,1)){
+  sinF <- rbind(cbind(0,0))
+  cosF <- rbind(cbind(0,0))
+  hLine <- rbind(cbind(0,0))
+  vLine <- rbind(cbind(0,0))
+  for (j in seq(-10,10,.1)){
+    sinF <- rbind(sinF,cbind(cos(j+i)+j,sin(j)))
+    cosF <- rbind(cosF,cbind(sin(j+i)+j,cos(j)))
+  }
+  lines(sinF[-1,])
+  lines(cosF[-1,])
+}
 
 ##### 20210501
 ### 
