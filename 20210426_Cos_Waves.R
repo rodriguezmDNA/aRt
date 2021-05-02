@@ -90,10 +90,7 @@ for (i in seq(-10,10,1)){
 }
 
 ##### 20210501
-### 
-
-
-
+###  repeat ribbons
 ribbon <- function(offset=0){
   for (i in seq(-10,10,1)){
     sinF <- rbind(cbind(0,0))
