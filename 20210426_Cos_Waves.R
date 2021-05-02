@@ -74,7 +74,6 @@ for (i in seq(-10,10,1)){
   lines(cosF[-1,])
 }
 
-
 ### ribbon
 emptyCanvas(10)
 for (i in seq(-10,10,1)){
@@ -92,3 +91,28 @@ for (i in seq(-10,10,1)){
 
 ##### 20210501
 ### 
+
+
+
+ribbon <- function(offset=0){
+  for (i in seq(-10,10,1)){
+    sinF <- rbind(cbind(0,0))
+    cosF <- rbind(cbind(0,0))
+    hLine <- rbind(cbind(0,0))
+    vLine <- rbind(cbind(0,0))
+    for (j in seq(-10,10,.1)){
+      sinF <- rbind(sinF, cbind( cos(j+i)+j , sin(j)  ))
+      cosF <- rbind(cosF, cbind( sin(j+i)+j , cos(j)  ))
+    }
+    lines(sinF[-1,] + offset )
+    lines(cosF[-1,] - offset)
+  }
+}
+
+
+emptyCanvas(10)
+
+for (i in seq(-10,10,2.5)){
+  print(i)
+  ribbon(i)
+}
