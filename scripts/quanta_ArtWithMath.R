@@ -9,12 +9,13 @@ y <- function(t,a=6,b=2,c=14,d=3) { sin(t) + (sin(a*t)/b) + (cos(c*t) * 1/d) }
 
 
 
-getCurve <- function(){
+
+getCurve <- function(a=6,b=2,c=14,d=3){
   out <- rbind(cbind(x(0),y(0)))
-  a = sample(seq(1,11),1)
-  b = sample(seq(1,11),1)
-  c = sample(seq(1,15),1)
-  d = sample(seq(1,11),1)
+  # a = sample(seq(1,11),1)
+  # b = sample(seq(1,11),1)
+  # c = sample(seq(1,15),1)
+  # d = sample(seq(1,11),1)
   #print(c(a,b,c,d))
   for (t in seq(0,sample(seq(9,15),1),.01)){
     out <- rbind(out,cbind(x(t,a=a,b=b,c=c,d=d),y(t,a=a,b=b,c=c,d=d)))
@@ -26,7 +27,7 @@ getCurve <- function(){
 drawParamCurves <- function(){
   
   out <- getCurve()
-  print(paste0('a=',a))
+  
   emptyCanvas(2)
   
   lines(out[,1],out[,2])
@@ -53,7 +54,12 @@ drawGrid <- function(){
 drawGrid()
 drawGrid()
 
-
+emptyCanvas(2)
+for (i in seq(6,10,2)){
+  lines(getCurve(6))
+  lines(getCurve(7))
+  
+}
 
 
 

@@ -97,7 +97,7 @@ ribbon <- function(offset=0){
     cosF <- rbind(cbind(0,0))
     hLine <- rbind(cbind(0,0))
     vLine <- rbind(cbind(0,0))
-    for (j in seq(-10,10,.1)){
+    for (j in seq(-10,10,.5)){
       sinF <- rbind(sinF, cbind( cos(j+i)+j , sin(j)  ))
       cosF <- rbind(cosF, cbind( sin(j+i)+j , cos(j)  ))
     }

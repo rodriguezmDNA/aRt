@@ -32,5 +32,3 @@ ggplot(out,aes(x=x,y=y)) +
     panel.grid.minor = element_blank(),
     plot.background=element_rect(fill = "black"),
     panel.background = element_rect(fill = 'black'))
-
-  
