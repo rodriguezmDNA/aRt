@@ -20,8 +20,6 @@ makeCircle <- function(Xcenter=0,Ycenter=0,group='a',max=10,step=.01){
 }
 
 
-
-
 #### Disappearing circles
 emptyCanvas(10)
 for (i in seq(-10,10,2)){

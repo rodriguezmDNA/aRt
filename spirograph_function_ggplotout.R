@@ -3,6 +3,12 @@ library(tidyverse)
 valX <- function(t,a,b){ ( (a-b) * cos(t) ) + b*cos(t* ((a/b)-1))}
 valY <- function(t,a,b){ ( (a-b) * sin(t) ) + b*sin(t* ((a/b)-1))}
 
+emptyCanvas <- function(pltLimit = 5 ){
+  plot(0, 0,
+       xlim=c(-pltLimit,pltLimit),
+       ylim=c(-pltLimit,pltLimit),
+       col = "transparent", xlab = "", ylab = "", axes=F)
+}
 
 drawSpirograph <- function(a=4,b=15,step=1){
   
@@ -59,6 +65,35 @@ ggplot() +
   geom_path(newSpiro2,mapping = aes(x,y),color='lightgray') +
   geom_path(newSpiro3,mapping = aes(x,y),color='lightgray') +
     theme(
+    axis.ticks =   element_blank(),
+    axis.text =    element_blank(),
+    axis.title =   element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background=element_rect(fill = "black"),
+    panel.background = element_rect(fill = 'black'))
+
+
+
+#### 20210503
+### spirospirospiro
+newSpiro <- drawSpirograph(1,2,.01) 
+newSpiro2 <- drawSpirograph(2,3,.01) 
+newSpiro3 <- drawSpirograph(2,1,.01)
+newSpiro4 <- drawSpirograph(3,4,.01)  
+
+emptyCanvas(20)
+lines(newSpiro)
+lines(newSpiro2)
+lines(newSpiro3)
+lines(newSpiro4)
+
+ggplot() +
+  geom_path(newSpiro,mapping = aes(x,y),color='lightgray') +
+  geom_path(newSpiro2,mapping = aes(x,y),color='lightgray') +
+  geom_path(newSpiro3,mapping = aes(x,y),color='lightgray') +
+  geom_path(newSpiro4,mapping = aes(x,y),color='lightgray') +
+  theme(
     axis.ticks =   element_blank(),
     axis.text =    element_blank(),
     axis.title =   element_blank(),
