@@ -19,13 +19,12 @@ for (t in seq(0,10,.01)){
   out <- rbind(out,cbind(xP,yP))
   points(xP,yP,pch='.')
 }
+
 out <- out[-1,]
 out <- data.frame(out)
 colnames(out) <- c('X','Y')
 ggplot(out,aes(x=X,y=Y)) +
   geom_path() #+
-
-
 
 
 ##### 20210418
@@ -71,12 +70,39 @@ for (i in seq(-10,2,4)){
     lines(sinsin(abs(j-i),-abs(i-j)))
   }}
 
-### Jupiter and beyond
-emptyCanvas(20)
-for (i in seq(-10,2,4)){ 
-  for (j in seq(-10,1,2)){
-    lines(sinsin(j+i,(i*i/(j+i)) ))
+
+
+### 20210506 - Jupiter and beyond
+
+out <- rbind(c(NA,NA,NA))
+colnames(out) <- c('X','Y','c')
+c <- 1
+
+for (i in seq(-10,2,2)){ 
+  for (j in seq(-10,1,4)){
+    tmp <- sinsin(j+i,(i*i/(j+i)))
+    out <- rbind(out,cbind(tmp[-1,],c))
+    c = c + 1
+    #lines()
   }}
+
+emptyCanvas(20)
+ggplot(out,aes(x=X,y=Y)) +
+  geom_point(color='white',size=0.05,) +
+  #theme_void()
+  theme(
+    axis.ticks =   element_blank(),
+    axis.text =    element_blank(),
+    axis.title =   element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background=element_rect(fill = "black"),
+    panel.background = element_rect(fill = 'black'))
+NULL
+
+
+####
+
 
 
 ##### 20210421
