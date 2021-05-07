@@ -10,14 +10,32 @@ emptyCanvas <- function(pltLimit = 5 ){
 #### Repeating patterns
 
 emptyCanvas(100)
+
+out <- rbind(c(NA,NA))
 for (i in seq(-256,256,1)){
   for (j in seq(-256,256,1)){
     if (sin(i)/cos(j) <= tan(i)){
-      print('True')
+      #print('True')
+      out <- rbind(out,rbind(c(i,j)))
       points(i,j,pch='.')
     }
   }}
 
+outDF <- data.frame(out)
+colnames(outDF) <- c('x','y')
+library(tidyverse)
+
+ggplot(outDF[-1,],aes(x=x,y=y)) +
+  geom_point(color='white',size=0.05) +
+  theme(
+    axis.ticks =   element_blank(),
+    axis.text =    element_blank(),
+    axis.title =   element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background=element_rect(fill = "black"),
+    panel.background = element_rect(fill = 'black'))
+  NULL
 
 ### Dot matrix pattern
 dev.off()
