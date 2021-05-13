@@ -18,8 +18,8 @@ new_shape_end <- rbind(rt,rb,lb,lt)
 new_shape <- cbind(new_shape_start,new_shape_end)
 
 plot(0, 0,
-     xlim=c(1,10),
-     ylim=c(1,10),
+     xlim=c(0,10),
+     ylim=c(0,10),
      col = "white", xlab = "", ylab = "", axes=F)
 for (i in seq(1,10)){
   for (j in seq(1,10)) {

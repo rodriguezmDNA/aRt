@@ -4,6 +4,7 @@ plot.new()
 
 center = 0 
 radius = 0.5
+l = 2
 
 plot(0, 0,
      xlim=c(-2,2),
@@ -13,6 +14,7 @@ grid.circle(r = .103,x = 0.5205,y=0.511)
 points(center,center,pch=20)
 
 
+l = 1
 for (i in seq(1,30000/2)){
   x <- runif(1,-1.5,1.5)
   y <- runif(1,-1.5,1.5)

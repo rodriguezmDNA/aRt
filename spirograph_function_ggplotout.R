@@ -37,7 +37,7 @@ drawSpirograph <- function(a=4,b=15,step=1){
 #### 20210501
 ## logo 618 design studio 
 drawSpirograph(4,15) 
-### Also can be drawin with lines
+### Also can be drawing with lines
 tmp <- drawSpirograph(4,-4)
 emptyCanvas(12)
 lines(tmp)

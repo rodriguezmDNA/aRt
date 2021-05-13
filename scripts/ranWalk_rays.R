@@ -1,12 +1,12 @@
 
 plot(0, 0,
-     xlim=c(-10,10),
-     ylim=c(-10,10),
+     xlim=c(-5,5),
+     ylim=c(-5,5),
      col = "white", xlab = "", ylab = "", axes=F)
 
 
-for (xprev in seq(-9.5,9.5,1)){
-  for (yprev in seq(-9.5,9.5,1)){
+for (xprev in seq(-9.5,9.5,2.5)){
+  for (yprev in seq(-9.5,9.5,2.5)){
     lineColor=sample(colors(),1)
     points(xprev,yprev)
     for (i in seq(1:6)){
