@@ -14,7 +14,7 @@ emptyCanvas(20)
 out <- rbind(cbind(x(0),y(0)))
 for (t in seq(0,10,.01)){
   
-  xP <- x(t,4)
+  xP <- x(t,2)
   yP <- y(t,15)
   out <- rbind(out,cbind(xP,yP))
   points(xP,yP,pch='.')
@@ -23,8 +23,27 @@ for (t in seq(0,10,.01)){
 out <- out[-1,]
 out <- data.frame(out)
 colnames(out) <- c('X','Y')
-ggplot(out,aes(x=X,y=Y)) +
-  geom_path() #+
+
+out$S <- rep_len(c('23','24','25'), length.out=nrow(out))
+
+ggplot() +
+  #geom_path(data=out,aes(x=X,y=Y),color='lightgray') +
+  #geom_point(data=out[tan(out$Y)  sin(out$Y)/cos(out$Y),],aes(x=X,y=Y))
+  #geom_point(data=out[cos(out$X) < sin(out$Y)/cos(out$Y),],aes(x=X,y=Y),size=5,color='lightgray',shape=20) +
+  geom_point(data=out[seq(1,nrow(out),25),],aes(x=X,y=Y),size=12,color='lightgray',shape=22) +
+  geom_point(data=out[seq(1,nrow(out),25),],aes(x=X,y=Y),size=5,color='lightgray',shape=21) +
+  geom_point(data=out[seq(1,nrow(out),5),],aes(x=X,y=Y),size=8,color='lightgray',shape=25) +
+  #geom_point(data=out[seq(1,nrow(out),25),],aes(x=X,y=Y),size=15,color='lightgray',shape=25) +
+  #geom_point(data=out[seq(1,nrow(out),13),],aes(x=X,y=Y,shape=S),size=15,color='lightgray',fill='transparent') +
+    theme(
+      axis.ticks =   element_blank(),
+      axis.text =    element_blank(),
+      axis.title =   element_blank(),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      plot.background=element_rect(fill = "black"),
+      panel.background = element_rect(fill = 'black'))
+  
 
 
 ##### 20210418
