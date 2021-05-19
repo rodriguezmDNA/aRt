@@ -29,12 +29,14 @@ drawParamCurves <- function(){
   out <- getCurve()
   
   emptyCanvas(2)
+  ### Mark certain points
+  points(out[cos(out[,1])/sin(out[,1]) < sin(out[,2])/2,] )
   
   lines(out[,1],out[,2])
-  
 }
 
 drawParamCurves()
+
 
 grpA = data.frame(getCurve())
 grpB = data.frame(getCurve() + 2)
