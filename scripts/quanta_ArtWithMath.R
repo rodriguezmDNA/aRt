@@ -46,6 +46,15 @@ points(out[cos(out[,1])/sin(out[,1]) < sin(out[,2])/2,],pch=c(15,22,17))
 points(out[cos(out[,1])/sin(out[,1]) > sin(out[,2])/2,],pch=c(22,17,15))
 
 
+##### 20210520
+## Sparce points
+out <- getCurve()
+emptyCanvas(2)
+points(out[seq(1,nrow(out),2),],pch=c(15,22,17))
+#points(out[seq(1,nrow(out),3),],pch='O')  #Beads on a string
+lines(out)
+
+
 drawParamCurves()
 
 
