@@ -27,13 +27,24 @@ getCurve <- function(a=6,b=2,c=14,d=3){
 drawParamCurves <- function(){
   
   out <- getCurve()
-  
   emptyCanvas(2)
   ### Mark certain points
-  points(out[cos(out[,1])/sin(out[,1]) < sin(out[,2])/2,] )
   
-  lines(out[,1],out[,2])
+  ## Alternating
+  points(out[cos(out[,1])/sin(out[,1]) < sin(out[,2])/2,],pch=c(15,22,17))
+  points(out[cos(out[,1])/sin(out[,1]) > sin(out[,2])/2,],pch=c(22,17,15))
+  
+  #lines(out[,1],out[,2])
 }
+
+
+##### 20210519
+## Alternating shapes by passing a list to pch
+out <- getCurve()
+emptyCanvas(2)
+points(out[cos(out[,1])/sin(out[,1]) < sin(out[,2])/2,],pch=c(15,22,17))
+points(out[cos(out[,1])/sin(out[,1]) > sin(out[,2])/2,],pch=c(22,17,15))
+
 
 drawParamCurves()
 
